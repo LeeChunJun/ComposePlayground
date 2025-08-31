@@ -1,4 +1,4 @@
-package com.jetgame.tetris
+package com.rhyme.handheldgame.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,12 +12,16 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.jetgame.tetris.logic.*
-import com.jetgame.tetris.ui.GameBody
-import com.jetgame.tetris.ui.GameScreen
-import com.jetgame.tetris.ui.PreviewGamescreen
-import com.jetgame.tetris.ui.combinedClickable
-import com.jetgame.tetris.ui.theme.ComposetetrisTheme
+import com.rhyme.handheldgame.games.tetris.ui.GameBody
+import com.rhyme.handheldgame.games.tetris.ui.GameScreen
+import com.rhyme.handheldgame.games.tetris.ui.PreviewGamescreen
+import com.rhyme.handheldgame.games.tetris.ui.combinedClickable
+import com.rhyme.handheldgame.games.tetris.ui.theme.ComposetetrisTheme
+import com.rhyme.handheldgame.games.tetris.logic.Action
+import com.rhyme.handheldgame.games.tetris.logic.Direction
+import com.rhyme.handheldgame.games.tetris.logic.GameViewModel
+import com.rhyme.handheldgame.games.tetris.logic.SoundUtil
+import com.rhyme.handheldgame.games.tetris.logic.StatusBarUtil
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 

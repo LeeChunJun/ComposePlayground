@@ -1,4 +1,4 @@
-package com.jetgame.tetris.logic
+package com.rhyme.handheldgame.games.tetris.logic
 
 import androidx.compose.ui.geometry.Offset
 import kotlin.math.absoluteValue

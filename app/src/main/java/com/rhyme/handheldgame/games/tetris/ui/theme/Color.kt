@@ -1,4 +1,4 @@
-package com.jetgame.tetris.ui.theme
+package com.rhyme.handheldgame.games.tetris.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

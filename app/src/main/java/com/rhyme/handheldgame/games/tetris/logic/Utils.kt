@@ -1,4 +1,4 @@
-package com.jetgame.tetris.logic
+package com.rhyme.handheldgame.games.tetris.logic
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,8 +7,8 @@ import android.graphics.Color
 import android.media.AudioManager
 import android.media.SoundPool
 import android.view.View
-import android.view.Window
 import android.view.WindowManager
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -16,7 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.jetgame.tetris.R
 
 
-fun Offset(x: Int, y: Int) = androidx.compose.ui.geometry.Offset(x.toFloat(), y.toFloat())
+fun Offset(x: Int, y: Int) = Offset(x.toFloat(), y.toFloat())
 
 enum class Direction {
     Left, Up, Right, Down

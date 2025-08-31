@@ -1,7 +1,6 @@
-package com.jetgame.tetris.ui
+package com.rhyme.handheldgame.games.tetris.ui
 
 import android.view.MotionEvent.*
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.indication
@@ -25,11 +24,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.jetgame.tetris.ui.theme.Purple200
-import com.jetgame.tetris.ui.theme.Purple500
+import com.rhyme.handheldgame.games.tetris.ui.theme.Purple200
+import com.rhyme.handheldgame.games.tetris.ui.theme.Purple500
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.ticker
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 

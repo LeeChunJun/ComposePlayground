@@ -1,4 +1,4 @@
-package com.jetgame.tetris.ui
+package com.rhyme.handheldgame.games.tetris.ui
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.LinearEasing
@@ -25,9 +25,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.jetgame.tetris.logic.LedFontFamily
-import com.jetgame.tetris.ui.theme.BrickMatrix
-import com.jetgame.tetris.ui.theme.BrickSpirit
+import com.rhyme.handheldgame.games.tetris.logic.LedFontFamily
+import com.rhyme.handheldgame.games.tetris.ui.theme.BrickMatrix
+import com.rhyme.handheldgame.games.tetris.ui.theme.BrickSpirit
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
