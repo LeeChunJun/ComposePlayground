@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
@@ -22,6 +23,7 @@ import com.rhyme.handheldgame.games.tetris.logic.Direction
 import com.rhyme.handheldgame.games.tetris.logic.GameViewModel
 import com.rhyme.handheldgame.games.tetris.logic.SoundUtil
 import com.rhyme.handheldgame.games.tetris.logic.StatusBarUtil
+import com.rhyme.handheldgame.shared.Game
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 
@@ -109,6 +111,39 @@ fun DefaultPreview() {
     ComposetetrisTheme {
         GameBody {
             PreviewGamescreen(Modifier.fillMaxSize())
+        }
+    }
+}
+
+// com/rhyme/handheldgame/app/MainActivity.kt
+@Composable
+fun MainScreen() {
+    var currentGame by remember { mutableStateOf<Game?>(null) }
+
+    if (currentGame == null) {
+        GameSelectionScreen(
+            games = listOf(TetrisGame(), BattleCityGame()),
+            onGameSelected = { game -> currentGame = game }
+        )
+    } else {
+        GameWrapper(
+            game = currentGame!!,
+            onBack = { currentGame = null }
+        )
+    }
+}
+
+@Composable
+fun GameSelectionScreen(
+    games: List<Game>,
+    onGameSelected: (Game) -> Unit
+) {
+    LazyColumn {
+        items(games) { game ->
+            GameItem(
+                game = game,
+                onClick = { onGameSelected(game) }
+            )
         }
     }
 }
