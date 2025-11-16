@@ -27,8 +27,8 @@ class TiltPdfReaderActivity : AppCompatActivity(),
     private var currentBitmap: Bitmap? = null
 
     private val pdfUri: Uri by lazy {
-        // 把 sample.pdf 放进 res/raw/
-        "android.resource://$packageName/raw/ooc.pdf".toUri()
+        // Place ooc.pdf in src/main/assets/ instead
+        Uri.parse("file:///android_asset/ooc.pdf")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

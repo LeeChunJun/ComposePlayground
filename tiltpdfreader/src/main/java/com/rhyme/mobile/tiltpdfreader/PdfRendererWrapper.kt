@@ -6,11 +6,25 @@ import android.net.Uri
 import android.os.ParcelFileDescriptor
 import android.graphics.pdf.PdfRenderer
 import androidx.core.graphics.createBitmap
+import java.io.File
+import java.io.FileOutputStream
 
 class PdfRendererWrapper(context: Context, uri: Uri) {
 
     private val fileDescriptor: ParcelFileDescriptor =
-        context.contentResolver.openFileDescriptor(uri, "r")!!
+        if (uri.toString().startsWith("file:///android_asset/")) {
+            val fileName =
+                uri.lastPathSegment ?: throw IllegalArgumentException("Invalid asset path")
+            val file = File(context.cacheDir, fileName)
+            context.assets.open(fileName).use { input ->
+                FileOutputStream(file).use { output ->
+                    input.copyTo(output)
+                }
+            }
+            ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
+        } else {
+            context.contentResolver.openFileDescriptor(uri, "r")!!
+        }
 
     private val renderer = PdfRenderer(fileDescriptor)
 
