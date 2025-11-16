@@ -5,6 +5,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.util.Log
 
 class TiltSensorManager(
     context: Context, private val onTiltChanged: (Float, Float) -> Unit
@@ -14,7 +15,7 @@ class TiltSensorManager(
     private val rotationVector = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
 
     fun start() {
-        sensorManager.registerListener(this, rotationVector, SensorManager.SENSOR_DELAY_UI)
+        sensorManager.registerListener(this, rotationVector, SensorManager.SENSOR_DELAY_GAME)
     }
 
     fun stop() {
@@ -29,6 +30,9 @@ class TiltSensorManager(
 
         val pitch = orientation[1]
         val roll = orientation[2]
+        
+        // Add logging to verify sensor events are being received
+        Log.d("TiltSensorManager", "Pitch: $pitch, Roll: $roll")
 
         onTiltChanged(pitch, roll)
     }

@@ -48,7 +48,12 @@ class TiltPdfReaderActivity : AppCompatActivity(),
         }
 
         try {
-            currentBitmap = pdfRenderer.renderPage(0, textureView.width, textureView.height)
+            // Render PDF at 2x the size of the view to allow for scrolling/tilting
+            currentBitmap = pdfRenderer.renderPage(
+                0, 
+                (textureView.width * 2).toInt(), 
+                (textureView.height * 2).toInt()
+            )
             drawBitmap()
             tiltSensor.start()
         } catch (e: FileNotFoundException) {
