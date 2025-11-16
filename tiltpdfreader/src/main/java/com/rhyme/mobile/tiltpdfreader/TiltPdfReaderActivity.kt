@@ -6,12 +6,10 @@ import android.graphics.Color
 import android.graphics.SurfaceTexture
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.TextureView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.net.toUri
 import java.io.FileNotFoundException
 
@@ -28,7 +26,7 @@ class TiltPdfReaderActivity : AppCompatActivity(),
 
     private val pdfUri: Uri by lazy {
         // Place ooc.pdf in src/main/assets/ instead
-        Uri.parse("file:///android_asset/ooc.pdf")
+        "file:///android_asset/ooc.pdf".toUri()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +52,7 @@ class TiltPdfReaderActivity : AppCompatActivity(),
             drawBitmap()
             tiltSensor.start()
         } catch (e: FileNotFoundException) {
+            Log.i(TAG, "FileNotFoundException: ${e.message}")
             Toast.makeText(this, "PDF file not found: ooc.pdf", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
             Toast.makeText(this, "Failed to load PDF: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -88,5 +87,9 @@ class TiltPdfReaderActivity : AppCompatActivity(),
         } finally {
             canvas?.let { textureView.unlockCanvasAndPost(it) }
         }
+    }
+
+    private companion object {
+        private const val TAG = "TiltPdfReaderActivity"
     }
 }

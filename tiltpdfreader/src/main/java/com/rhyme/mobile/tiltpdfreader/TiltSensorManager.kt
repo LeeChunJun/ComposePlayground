@@ -7,7 +7,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 
 class TiltSensorManager(
-    private val context: Context, private val onTiltChanged: (Float, Float) -> Unit
+    context: Context, private val onTiltChanged: (Float, Float) -> Unit
 ) : SensorEventListener {
 
     private val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
