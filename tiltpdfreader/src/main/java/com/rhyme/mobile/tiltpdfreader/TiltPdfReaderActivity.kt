@@ -48,7 +48,7 @@ class TiltPdfReaderActivity : AppCompatActivity(),
         }
 
         try {
-            currentBitmap = pdfRenderer.renderPage(0)
+            currentBitmap = pdfRenderer.renderPage(0, textureView.width, textureView.height)
             drawBitmap()
             tiltSensor.start()
         } catch (e: FileNotFoundException) {

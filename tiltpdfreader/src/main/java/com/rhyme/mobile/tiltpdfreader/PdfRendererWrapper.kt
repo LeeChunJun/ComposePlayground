@@ -28,13 +28,29 @@ class PdfRendererWrapper(context: Context, uri: Uri) {
 
     private val renderer = PdfRenderer(fileDescriptor)
 
-    fun renderPage(index: Int): Bitmap {
+    fun renderPage(index: Int, targetWidth: Int = -1, targetHeight: Int = -1): Bitmap {
         val page = renderer.openPage(index)
-        val bitmap = createBitmap(page.width, page.height)
+
+        // Determine actual render dimensions
+        val bitmapWidth: Int
+        val bitmapHeight: Int
+
+        if (targetWidth > 0 && targetHeight > 0) {
+            // Use specified target dimensions
+            bitmapWidth = targetWidth
+            bitmapHeight = targetHeight
+        } else {
+            // Fall back to original page dimensions
+            bitmapWidth = page.width
+            bitmapHeight = page.height
+        }
+
+        val bitmap = createBitmap(bitmapWidth, bitmapHeight)
         page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
         page.close()
         return bitmap
     }
+
 
     fun close() {
         renderer.close()
